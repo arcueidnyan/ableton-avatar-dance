@@ -3,6 +3,9 @@ on:
   workflow_dispatch:
   push:
     paths: ['CMakeLists.txt', 'vst3/**', 'avatars/*/sprite-sheet.png', '.github/workflows/vst3.yml']
+concurrency:
+  group: vst3-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
@@ -10,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-2022, macos-14]
+        os: [windows-2022, macos-15]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
