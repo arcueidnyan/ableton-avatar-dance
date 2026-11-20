@@ -26,7 +26,7 @@ Avatar Dance — визуальный VST3-инструмент. Персона�
 
 ## Сборка из исходников
 
-Нужны CMake 3.22+, Git и компилятор C++17 (Visual Studio с C++ на Windows, Xcode на macOS). CMake загружает JUCE 7.0.12. Обе картинки встраиваются в плагин при сборке.
+Нужны CMake 3.22+, Git и компилятор C++17 (Visual Studio с C++ на Windows, Xcode на macOS). CMake загружает JUCE 7.0.12 на Windows и 8.0.8 на macOS. Обе картинки встраиваются в плагин при сборке.
 
 ```sh
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release

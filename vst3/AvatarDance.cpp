@@ -63,7 +63,7 @@ struct Skin
             if (!skin.atlas.isValid() && image.hasFileExtension("bmp"))
             {
                 MemoryBlock bytes;
-                if (image.getSize() <= std::numeric_limits<int>::max() && image.loadFileAsData(bytes))
+                if (image.getSize() <= (std::numeric_limits<int>::max)() && image.loadFileAsData(bytes))
                 {
                     int w=0,h=0,channels=0;
                     if (auto* rgba=stbi_load_from_memory(static_cast<const stbi_uc*>(bytes.getData()),

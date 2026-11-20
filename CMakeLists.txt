@@ -4,7 +4,12 @@ if(APPLE)
     enable_language(OBJCXX)
 endif()
 include(FetchContent)
-FetchContent_Declare(JUCE GIT_REPOSITORY https://github.com/juce-framework/JUCE.git GIT_TAG 7.0.12 GIT_SHALLOW TRUE)
+set(JUCE_VERSION_TAG 7.0.12)
+if(APPLE)
+    # Support the current Apple SDK and its ScreenCaptureKit APIs.
+    set(JUCE_VERSION_TAG 8.0.8)
+endif()
+FetchContent_Declare(JUCE GIT_REPOSITORY https://github.com/juce-framework/JUCE.git GIT_TAG ${JUCE_VERSION_TAG} GIT_SHALLOW TRUE)
 FetchContent_MakeAvailable(JUCE)
 juce_add_plugin(AvatarDance COMPANY_NAME "Avatar Dance" BUNDLE_ID "music.avatardance.vst3"
     PLUGIN_MANUFACTURER_CODE Ardn PLUGIN_CODE Avdc FORMATS VST3
