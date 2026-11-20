@@ -21,6 +21,23 @@ jobs:
         if: runner.os == 'macOS'
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release '-DCMAKE_OSX_ARCHITECTURES=arm64;x86_64'
       - run: cmake --build build --config Release --target AvatarDance_VST3 --parallel 3
+      - name: Validate Windows VST3
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          Invoke-WebRequest https://github.com/Tracktion/pluginval/releases/download/v1.0.4/pluginval_Windows.zip -OutFile validator.zip
+          Expand-Archive validator.zip validator
+          $validator = (Get-ChildItem validator -Recurse -Filter pluginval.exe).FullName
+          $bundle = (Resolve-Path 'build/AvatarDance_artefacts/Release/VST3/Avatar Dance.vst3').Path
+          & $validator --validate-in-process --strictness-level 5 --timeout-ms 120000 --validate "$bundle" | Out-Host
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Validate macOS VST3
+        if: runner.os == 'macOS'
+        run: |
+          curl -fLsS https://github.com/Tracktion/pluginval/releases/download/v1.0.4/pluginval_macOS.zip -o validator.zip
+          ditto -x -k validator.zip validator
+          runner=$(find validator -type f -path '*/Contents/MacOS/pluginval' -print -quit)
+          "$runner" --validate-in-process --strictness-level 5 --timeout-ms 120000 --validate "$PWD/build/AvatarDance_artefacts/Release/VST3/Avatar Dance.vst3"
       - name: Package Windows
         if: runner.os == 'Windows'
         run: Compress-Archive -Path 'build/AvatarDance_artefacts/Release/VST3/Avatar Dance.vst3' -DestinationPath Avatar-Dance.zip
