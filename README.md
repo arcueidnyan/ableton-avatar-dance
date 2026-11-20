@@ -4,7 +4,7 @@ Avatar Dance — визуальный VST3-инструмент. Персона�
 
 ## Установка в Windows x64
 
-1. Скачайте ZIP из [релизов](https://github.com/arcueidnyan/ableton-avatar-dance/releases). Распакуйте папку `Avatar Dance.vst3` целиком в `C:\Program Files\Common Files\VST3\`.
+1. Скачайте [готовый VST3 для Windows x64](https://github.com/arcueidnyan/ableton-avatar-dance/raw/refs/heads/main/downloads/Avatar-Dance-Windows-x64.zip). Распакуйте папку `Avatar Dance.vst3` целиком в `C:\Program Files\Common Files\VST3\`.
 2. В Live откройте **Settings → Plug-Ins**, включите системную папку VST3 и нажмите **Rescan**.
 3. Перетащите **Avatar Dance** из **Plug-Ins → VST3** на MIDI-дорожку. Выберите аватар и движение в окне плагина. Окно настроек можно закрыть и продолжить работу с персонажем на экране.
 
