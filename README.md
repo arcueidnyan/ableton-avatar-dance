@@ -17,11 +17,19 @@
 
 Кадр вычисляется из текущей позиции транспорта в долях. Смена темпа, перемотка и петля Live меняют ход анимации вместе с транспортом. При остановке аватар возвращается к первому кадру. Папку и скорость в этой версии нужно заново выбрать после повторной загрузки устройства.
 
-## Тестовый аватар Cobalt Dancer
+## Тестовый аватар Nocturne
 
-![Танцевальный цикл Cobalt Dancer](avatars/cobalt-dancer-preview.gif)
+![Три цикла Nocturne](avatars/nocturne/preview.webp)
 
-В [папке аватара](avatars/cobalt-dancer) лежат восемь прозрачных PNG-кадров (320 × 360 px) по мотивам клипа Pearl Jam «Do the Evolution». В **Choose folder…** выберите папку `avatars/cobalt-dancer` и нажмите Play в Live. При 4 **frm/beat** цикл занимает две доли.
+В папке [Nocturne](avatars/nocturne) три танцевальных цикла по мотивам движений из клипа Pearl Jam «Do the Evolution». Для **Choose folder…** выберите одну из подпапок.
+
+- [Sway](avatars/nocturne/sway) — покачивание с переносом веса.
+- [Reach](avatars/nocturne/reach) — взмах рукой над головой.
+- [Dip](avatars/nocturne/dip) — резкий наклон и возврат.
+
+Каждый цикл состоит из 24 прозрачных PNG-кадров размером 384 × 384. Установите **6 frm/beat**, чтобы цикл занимал четыре доли. [Ключевые позы](avatars/nocturne/poses.jpg) показаны в том же порядке сверху вниз.
+
+Персонаж нарисован векторными контурами. Движение задают ключевые позы в [скрипте рендера](avatars/nocturne/render.py). Чтобы пересобрать кадры, установите CairoSVG и Pillow и запустите `python avatars/nocturne/render.py avatars/nocturne` из корня репозитория.
 
 ## Проверка в Live
 
